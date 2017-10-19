@@ -3,7 +3,7 @@ Simple bash script for allowing a Zabbix server to change color of a Philip's Hu
 
 ## Setup
 Requires the following parameters (config in Zabbix during custom media type setup):
-* {ALERT.SENDTO}
-* hue ip address
-* hue user name/token
-* hue bulb number
+* {ALERT.SUBJECT}
+* Hue IP address
+* Hue user name/token
+* Hue bulb number
