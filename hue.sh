@@ -29,9 +29,9 @@ resolve='{"on": true, "xy": [0.1, 0.7], "alert": "none"}'
 problem='{"on": true, "xy": [0.65,0.25], "alert": "lselect"}'
 
 # parse subject (from zabbix) and call hue with appropriate payload
-if [ "$subject" = "Resolved" ]; then
+if [[ "$subject" = "Resolved"* ]]; then
     curl -X PUT -H "Content-Type: application/json" -d "${resolve}" "${url}"
-elif [ "$subject" = "Problem" ]; then
+elif [[ "$subject" = "Problem"* ]]; then
     curl -X PUT -H "Content-Type: application/json" -d "${problem}" "${url}"
 fi
 
