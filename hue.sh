@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Zabbix alertscript for Philip's Hue (lightbulb)
+
 # parameters from zabbix
 subject=$1
 ip=$2
@@ -25,8 +27,6 @@ light=$4
 url="http://${ip}/api/${user}/lights/${light}/state"
 resolve='{"on": true, "xy": [0.1, 0.7], "alert": "none"}'
 problem='{"on": true, "xy": [0.65,0.25], "alert": "lselect"}'
-
-echo $url
 
 # parse subject (from zabbix) and call hue with appropriate payload
 if [ "$subject" = "Resolved" ]; then
