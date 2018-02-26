@@ -26,12 +26,14 @@ light=$4
 # curl setup 
 url="http://${ip}/api/${user}/lights/${light}/state"
 resolve='{"on": true, "xy": [0.1, 0.7], "alert": "none"}'
-problem='{"on": true, "xy": [0.65,0.25], "alert": "lselect"}'
+problem='{"on": true, "xy": [0.55, 0.45], "alert": "lselect"}'
+disaster='{"on": true, "xy": [0.65,0.25], "alert": "lselect"}'
 
 # parse subject (from zabbix) and call hue with appropriate payload
-if [[ "$subject" = "Resolved"* ]]; then
-    curl -X PUT -H "Content-Type: application/json" -d "${resolve}" "${url}"
+if [[ "$subject" = "Problem:Disaster" ]]; then
+   curl -X PUT -H "Content-Type: application/json" -d "${disaster}" "${url}"
 elif [[ "$subject" = "Problem"* ]]; then
-    curl -X PUT -H "Content-Type: application/json" -d "${problem}" "${url}"
+    curl -X PUT -H "Content-Type: application/json" -d "${problem}" "${url}" 
+elif [[ "$subject" = "Resolved"* ]]; then
+    curl -X PUT -H "Content-Type: application/json" -d "${resolve}" "${url}"
 fi
-
