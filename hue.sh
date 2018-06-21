@@ -26,7 +26,7 @@ light=$4
 # curl setup 
 url="http://${ip}/api/${user}/lights/${light}/state"
 resolve='{"on": true, "xy": [0.1, 0.7], "alert": "none"}'
-problem='{"on": true, "xy": [0.55, 0.45], "alert": "lselect"}'
+problem='{"on": true, "xy": [0.5, 0.55], "alert": "lselect"}'
 disaster='{"on": true, "xy": [0.65,0.25], "alert": "lselect"}'
 
 # parse subject (from zabbix) and call hue with appropriate payload
